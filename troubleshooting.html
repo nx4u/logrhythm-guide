@@ -1,0 +1,22 @@
+<!doctype html><html lang="ar" dir="rtl" data-lang="ar" data-theme="dark"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Troubleshooting | LogRhythm Guide</title><meta name="description" content="Bilingual LogRhythm SIEM guide"/><link rel="stylesheet" href="style.css"/></head><body>
+
+<header class="topbar">
+  <div class="container wrap">
+    <a class="brand" href="index.html"><span class="brand-mark">LR</span><span><strong>LogRhythm Guide</strong><small>SIEM · AIE · SOC Ops</small></span></a>
+    <nav class="nav">
+      <a  href="index.html">Home</a>
+      <a  href="deep-dive.html">Deep Dive</a>
+      <a  href="client-console.html">Client Console</a>
+      <a  href="platform-manager.html">Platform Manager</a>
+      <a  href="use-cases.html">Use Cases</a>
+      <a  href="queries.html">Queries</a>
+      <a class="active" href="troubleshooting.html">Troubleshooting</a>
+      <a  href="checklists.html">Checklists</a>
+    </nav>
+    <div class="actions"><button id="langToggle" class="btn">EN</button><button id="themeToggle" class="btn">Light</button></div>
+  </div>
+</header>
+
+
+<main class="container"><section class="hero" style="padding-top:30px"><div class="panel hero-copy"><span class="eyebrow">Troubleshooting</span><h1><span class="lang-ar lang-block">التروبلشوتنق حسب المكوّن</span><span class="lang-en lang-block">Component-Based Troubleshooting</span></h1><p class="lead"><span class="lang-ar lang-block">رتبت الأعطال حسب مكان المشكلة داخل المنصة حتى يكون التحليل أسرع وأوضح.</span><span class="lang-en lang-block">Issues are grouped by platform stage so analysis is faster and clearer.</span></p></div></section><section class="section"><div class="grid cols-2"><article class="card"><span class="badge">System Monitor</span><h3>No Logs / Remote Collection Fails</h3><ul class="clean"><li>Check the System Monitor service status</li><li>Review <code>scsm.log</code> for access denied / failed to open event log</li><li>Validate service account permissions and Event Log Readers membership</li><li>Confirm firewall and connectivity to the remote host</li><li>For flat files: validate path, permissions, directory settings, and timestamp parsing</li></ul></article><article class="card"><span class="badge">Data Processor</span><h3>Logs Arrive but Are Not Parsed</h3><ul class="clean"><li>Review <code>scmedsvr.log</code> and <code>scmpe.log</code></li><li>Confirm the device is mapped to the correct Log Source Type</li><li>Validate whether an MPE rule is matching</li><li>Search for raw logs and compare against parsed metadata</li></ul></article><article class="card"><span class="badge">Data Indexer</span><h3>Search Missing Data</h3><ul class="clean"><li>Check <code>columbo.log</code>, <code>carpenter.log</code>, and <code>bulldozer.log</code></li><li>Review disk health and indexer service state</li><li>Compare data arrival time with search visibility</li></ul></article><article class="card"><span class="badge">AI Engine / ARM</span><h3>Rule Does Not Trigger or Email Does Not Send</h3><ul class="clean"><li>Confirm the AIE rule is enabled and logically correct</li><li>Validate Group By, time limit, thresholds, and metadata availability</li><li>Check <code>lraieengine.log</code> and <code>lraiecommgr.log</code></li><li>If event exists but no notification: inspect <code>scarm.log</code>, SMTP, notify tab, policy, and recipients</li></ul></article></div></section></main>
+<footer><div class="container"><p class="lang-ar lang-block">نسخة أوضح وأكثر احترافية من الدليل، مع إصلاح تحويل اللغة وإضافة رسومات توضيحية.</p><p class="lang-en lang-block">A clearer, more professional version of the guide with fixed language switching and added visuals.</p><small class="tiny">v3 · GitHub Pages ready</small></div></footer><script src="script.js"></script></body></html>

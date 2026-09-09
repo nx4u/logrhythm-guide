@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-lang="ar" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Client Console | LogRhythm Guide</title>
+<meta name="description" content="Bilingual LogRhythm SIEM expert guide"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container wrap">
+    <a class="brand" href="index.html"><span class="brand-mark">LR</span><span><strong>LogRhythm Guide</strong><small>SIEM · AIE · SOC Ops</small></span></a>
+    <nav class="nav">
+      <a  href="index.html">Home</a>
+      <a  href="deep-dive.html">Deep Dive</a>
+      <a class="active" href="client-console.html">Client Console</a>
+      <a  href="platform-manager.html">Platform Manager</a>
+      <a  href="use-cases.html">Use Cases</a>
+      <a  href="queries.html">Queries</a>
+      <a  href="troubleshooting.html">Troubleshooting</a>
+      <a  href="checklists.html">Checklists</a>
+    </nav>
+    <div class="actions"><button id="langToggle" class="btn">EN</button><button id="themeToggle" class="btn">Light</button></div>
+  </div>
+</header>
+
+
+<section class="hero"><div class="container hero-grid">
+<div class="panel hero-copy"><span class="eyebrow">Client Console Walkthrough</span><h1><span class="lang-ar lang-block">شرح Client Console للمسؤول</span><span class="lang-en lang-block">Client Console Walkthrough for Administrators</span></h1><p class="lead"><span class="lang-ar lang-block">Client Console هي واجهة الإدارة الأساسية. منها تدير Deployment Manager، Hosts، Log Sources، System Monitors، AIE Rules، Alarm Rules، والتقارير.</span><span class="lang-en lang-block">Client Console is the primary administration interface. Use it for Deployment Manager, Hosts, Log Sources, System Monitors, AIE Rules, Alarm Rules, and reports.</span></p></div>
+<div class="panel hero-visual"><figure class="media"><img src="assets/client-console.svg" alt="Client Console illustration"/><figcaption><span class="lang-ar lang-block">رسم تعليمي مبسط للواجهة وليس لقطة شاشة رسمية.</span><span class="lang-en lang-block">Simplified training illustration, not an official screenshot.</span></figcaption></figure></div>
+</div></section>
+<main class="container">
+<section class="section"><div class="section-head"><p class="kicker">Daily Admin Paths</p><h2><span class="lang-ar lang-block">أهم المسارات داخل Client Console</span><span class="lang-en lang-block">Key Client Console Paths</span></h2></div>
+<div class="grid cols-2">
+<article class="card playbook"><h3>Deployment Manager → Hosts</h3><p><span class="lang-ar lang-block">هنا تدير تعريف الأجهزة. لا تضيف Log Source بدون فهم الـ Host المرتبط به، لأن الـ Host هو سياق المصدر داخل LogRhythm.</span><span class="lang-en lang-block">Manage host records here. Do not add a log source without understanding its Host context.</span></p></article>
+<article class="card playbook"><h3>Deployment Manager → System Monitors</h3><p><span class="lang-ar lang-block">هنا تضيف أو تعدّل الـ Agents ومصادر اللوق المرتبطة بها. هذا المسار مهم في Windows collection وSyslog وFlat File.</span><span class="lang-en lang-block">Add or adjust agents and their log sources here. This is critical for Windows collection, Syslog, and flat files.</span></p></article>
+<article class="card playbook"><h3>AI Engine Rule Wizard</h3><p><span class="lang-ar lang-block">استخدمه لبناء Rule Blocks. ركز على Primary Criteria، Data Filters، Group By، Relationship Time Limit، والـ Actions.</span><span class="lang-en lang-block">Use it to build rule blocks. Focus on Primary Criteria, Data Filters, Group By, Relationship Time Limit, and Actions.</span></p></article>
+<article class="card playbook"><h3>Alarm Rules → Notify</h3><p><span class="lang-ar lang-block">عند مشاكل الإشعارات، افحص من يتم إشعاره: Person أو Role أو Group، ثم راجع Notification Policy وSMTP.</span><span class="lang-en lang-block">For notification issues, inspect who is notified: Person, Role, or Group, then validate Notification Policy and SMTP.</span></p></article>
+</div></section>
+<section class="section"><div class="section-head"><p class="kicker">Walkthrough</p><h2><span class="lang-ar lang-block">إضافة Log Source بطريقة صحيحة</span><span class="lang-en lang-block">Adding a Log Source Correctly</span></h2></div>
+<div class="stepper">
+<div class="step"><h3><span class="lang-ar lang-block">حدد نوع المصدر</span><span class="lang-en lang-block">Identify source type</span></h3><p>Windows Event Log, Syslog, Flat File, API, UDLA.</p></div>
+<div class="step"><h3><span class="lang-ar lang-block">حدد الـ System Monitor المناسب</span><span class="lang-en lang-block">Choose the right System Monitor</span></h3><p><span class="lang-ar lang-block">اختيار agent غلط يعني أن اللوق لن يصل أو سيظهر من سياق خاطئ.</span><span class="lang-en lang-block">Wrong agent selection means the log may not arrive or may appear in the wrong context.</span></p></div>
+<div class="step"><h3><span class="lang-ar lang-block">أضف المصدر من خصائص الـ Agent</span><span class="lang-en lang-block">Add source from Agent properties</span></h3><p><span class="lang-ar lang-block">المسار النموذجي: Deployment Manager → System Monitors → Agent Properties → New Log Message Source.</span><span class="lang-en lang-block">Typical path: Deployment Manager → System Monitors → Agent Properties → New Log Message Source.</span></p></div>
+<div class="step"><h3><span class="lang-ar lang-block">تحقق من النتيجة</span><span class="lang-en lang-block">Validate the outcome</span></h3><p><span class="lang-ar lang-block">لا تكتفي بالحفظ. تحقق من Last Log Date، حجم اللوق، raw log، parsed metadata، والبحث في Web Console.</span><span class="lang-en lang-block">Do not stop after saving. Validate Last Log Date, volume, raw log, parsed metadata, and Web Console search.</span></p></div>
+</div></section>
+</main>
+
+<footer><div class="container"><p class="lang-ar lang-block">LogRhythm Guide v4 · نسخة أعمق بأسلوب مستشار: شرح، خطوات، قوائم، ورسومات داخلية قابلة للنشر مباشرة.</p><p class="lang-en lang-block">LogRhythm Guide v4 · deeper consultant-style guide with explanations, steps, checklists, and built-in visuals.</p><small class="tiny">Not an official LogRhythm site. Validate settings in your environment before production changes.</small></div></footer>
+<script src="script.js"></script>
+</body></html>

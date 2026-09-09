@@ -1,0 +1,29 @@
+<!doctype html><html lang="ar" dir="rtl" data-lang="ar" data-theme="dark"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Queries | LogRhythm Guide</title><meta name="description" content="Bilingual LogRhythm SIEM guide"/><link rel="stylesheet" href="style.css"/></head><body>
+
+<header class="topbar">
+  <div class="container wrap">
+    <a class="brand" href="index.html"><span class="brand-mark">LR</span><span><strong>LogRhythm Guide</strong><small>SIEM · AIE · SOC Ops</small></span></a>
+    <nav class="nav">
+      <a  href="index.html">Home</a>
+      <a  href="deep-dive.html">Deep Dive</a>
+      <a  href="client-console.html">Client Console</a>
+      <a  href="platform-manager.html">Platform Manager</a>
+      <a  href="use-cases.html">Use Cases</a>
+      <a class="active" href="queries.html">Queries</a>
+      <a  href="troubleshooting.html">Troubleshooting</a>
+      <a  href="checklists.html">Checklists</a>
+    </nav>
+    <div class="actions"><button id="langToggle" class="btn">EN</button><button id="themeToggle" class="btn">Light</button></div>
+  </div>
+</header>
+
+
+<main class="container"><section class="hero" style="padding-top:30px"><div class="panel hero-copy"><span class="eyebrow">Query Library</span><h1><span class="lang-ar lang-block">مكتبة استعلامات وتحقيقات</span><span class="lang-en lang-block">Search & Investigation Query Library</span></h1><p class="lead"><span class="lang-ar lang-block">هذه قوالب ذهنية وأسطر بحث تساعد المحلل يبدأ التحقيق بسرعة.</span><span class="lang-en lang-block">These are investigation patterns and search starters to help analysts move quickly.</span></p></div></section><section class="section"><div class="grid cols-2"><article class="card"><span class="badge">Windows Auth</span><h3>Failed / Successful Login Pivot</h3><pre>User = &lt;target_user&gt;
+AND (CommonEvent = "Login Failure" OR CommonEvent = "Login Success")
+Time Range = Last 24 Hours</pre></article><article class="card"><span class="badge">AIE</span><h3>AIE Events Search</h3><pre>Message LIKE "AIE%"
+OR Event Name begins with AIE</pre></article><article class="card"><span class="badge">Syslog</span><h3>Missing Syslog Validation</h3><pre>Log Source = &lt;device_name&gt;
+Time Range = Last 4 Hours
+Check volume trend and last observed time</pre></article><article class="card"><span class="badge">Admin Abuse</span><h3>Rare Admin Activity</h3><pre>User = &lt;admin_account&gt;
+AND Host != usual_admin_host
+AND Time NOT BETWEEN maintenance_window</pre></article></div></section></main>
+<footer><div class="container"><p class="lang-ar lang-block">نسخة أوضح وأكثر احترافية من الدليل، مع إصلاح تحويل اللغة وإضافة رسومات توضيحية.</p><p class="lang-en lang-block">A clearer, more professional version of the guide with fixed language switching and added visuals.</p><small class="tiny">v3 · GitHub Pages ready</small></div></footer><script src="script.js"></script></body></html>
