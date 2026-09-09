@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>LogRhythm Reference Guide | دليل LogRhythm</title>
+<meta name="description" content="Bilingual Arabic/English LogRhythm SIEM reference guide for SOC, AIE, troubleshooting, and support." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">LR</span>
+    <span><strong>LogRhythm Guide</strong><small>SIEM · AIE · SOC Ops</small></span>
+  </a>
+  <nav class="nav"><a class="active" href="index.html"><span class="ar">الرئيسية</span><span class="en">Home</span></a><a class="" href="use-cases.html"><span class="ar">حالات الكشف</span><span class="en">Use Cases</span></a><a class="" href="queries.html"><span class="ar">استعلامات</span><span class="en">Queries</span></a><a class="" href="troubleshooting.html"><span class="ar">الأعطال</span><span class="en">Troubleshooting</span></a><a class="" href="checklists.html"><span class="ar">القوائم</span><span class="en">Checklists</span></a></nav>
+  <div class="actions"><button id="langToggle" class="btn">EN / ع</button><button id="themeToggle" class="btn">Light</button></div>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">Professional LogRhythm SIEM Reference</p>
+  <h1><span class="ar">دليل LogRhythm العملي</span><span class="en">Practical LogRhythm Guide</span></h1>
+  <p class="subtitle"><span class="ar">موقع مرجعي سريع لمحللي SOC ومسؤولي LogRhythm: Life of a Log، المكونات، AIE، التروبلشوتنق، الاستعلامات، والـ Playbooks.</span><span class="en">A fast reference for SOC analysts and LogRhythm administrators: Life of a Log, components, AIE, troubleshooting, queries, and playbooks.</span></p>
+  <div class="hero-buttons">
+    <a href="#life" class="primary">Life of a Log</a>
+    <a href="use-cases.html" class="secondary">AIE Use Cases</a>
+    <a href="troubleshooting.html" class="secondary">Troubleshooting</a>
+  </div>
+  <div class="stats">
+    <article class="stat"><strong>8+</strong><span class="ar">مكونات رئيسية</span><span class="en">Core Components</span></article>
+    <article class="stat"><strong>4</strong><span class="ar">أنواع AIE Rule Blocks</span><span class="en">AIE Rule Block Types</span></article>
+    <article class="stat"><strong>20+</strong><span class="ar">فحص تشخيصي</span><span class="en">Health Checks</span></article>
+    <article class="stat"><strong>5</strong><span class="ar">صفحات جاهزة</span><span class="en">Ready Pages</span></article>
+  </div>
+</section>
+<main>
+<section id="life" class="section">
+  <div class="section-head">
+    <p class="kicker">Life of a Log</p>
+    <h2><span class="ar">رحلة اللوق داخل LogRhythm</span><span class="en">LogRhythm Data Flow</span></h2>
+    <p><span class="ar">ابدأ دائماً من مسار اللوق لتعرف أين توقفت المشكلة: هل هي Collection، Processing، Indexing، Correlation، أو Notification؟</span><span class="en">Always start with the log path to determine where the issue stops: collection, processing, indexing, correlation, or notification.</span></p>
+  </div>
+  <div class="flow">
+    <div>Log Source</div><div>System Monitor</div><div>Data Processor</div><div>Data Indexer</div><div>AI Engine</div><div>Platform Manager</div><div>Console</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="kicker">Core Components</p>
+    <h2><span class="ar">مكونات LogRhythm الأساسية</span><span class="en">Core LogRhythm Components</span></h2>
+  </div>
+  <div class="grid cards-4">
+    <article class="card"><h3>System Monitor</h3><p><span class="ar">يجمع اللوقات محلياً أو عن بعد ويرسلها إلى Data Processor.</span><span class="en">Collects local or remote logs and forwards them to the Data Processor.</span></p><code>scsm.log</code></article>
+    <article class="card"><h3>Data Processor</h3><p><span class="ar">يعالج اللوقات، يطابق MPE Rules، ويستخرج الـ Metadata.</span><span class="en">Processes logs, matches MPE rules, and extracts metadata.</span></p><code>scmpe.log</code></article>
+    <article class="card"><h3>Data Indexer</h3><p><span class="ar">يخزن اللوقات الخام والـ Metadata للبحث والتحليل.</span><span class="en">Stores raw logs and metadata for search and analytics.</span></p><code>columbo.log</code></article>
+    <article class="card"><h3>AI Engine</h3><p><span class="ar">يربط الأحداث باستخدام Rule Blocks لاكتشاف النشاط المعقد.</span><span class="en">Correlates events with rule blocks to detect complex activity.</span></p><code>lraieengine.log</code></article>
+    <article class="card"><h3>Platform Manager</h3><p><span class="ar">يدير التنبيهات، التقارير، الإشعارات، وقواعد البيانات.</span><span class="en">Manages alarms, reports, notifications, and databases.</span></p><code>scarm.log</code></article>
+    <article class="card"><h3>Web Console</h3><p><span class="ar">واجهة المحلل للبحث، الداشبورد، والتنبيهات.</span><span class="en">Analyst interface for search, dashboards, and alarms.</span></p><code>Web Console API.log</code></article>
+    <article class="card"><h3>Client Console</h3><p><span class="ar">واجهة الإدارة الأساسية لإدارة المصادر والقواعد.</span><span class="en">Primary administration interface for sources and rules.</span></p><span class="badge">Admin</span></article>
+    <article class="card"><h3>ARM</h3><p><span class="ar">يشغل الإنذارات، الإشعارات، و SmartResponse.</span><span class="en">Triggers alarms, notifications, and SmartResponse actions.</span></p><code>scarm.log</code></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="kicker">Methodology</p>
+    <h2><span class="ar">منهجية التروبلشوتنق</span><span class="en">Troubleshooting Methodology</span></h2>
+  </div>
+  <div class="grid cards-3">
+    <article class="card"><span class="badge">1</span><h3>Define</h3><p>Make a clear problem statement: what is missing, delayed, failing, or noisy?</p></article>
+    <article class="card"><span class="badge">2</span><h3>Gather</h3><p>Collect timeline, scope, component status, service logs, counters, and recent changes.</p></article>
+    <article class="card"><span class="badge">3</span><h3>Analyze</h3><p>Map evidence to the Life of a Log and identify the likely failing stage.</p></article>
+    <article class="card"><span class="badge">4</span><h3>Hypothesize</h3><p>Write one likely cause, such as permissions, firewall, parsing, workload, or ARM notification conflict.</p></article>
+    <article class="card"><span class="badge">5</span><h3>Test</h3><p>Change one thing, validate outcome, then roll back or continue.</p></article>
+    <article class="card"><span class="badge">6</span><h3>Document</h3><p>Record symptoms, root cause, evidence, fix, and prevention.</p></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="kicker">Quick Access</p>
+    <h2><span class="ar">ابدأ من هنا</span><span class="en">Start Here</span></h2>
+  </div>
+  <div class="grid cards-3">
+    <a class="card" href="use-cases.html"><h3>AIE Use Cases</h3><p>Detection logic, rule blocks, metadata, and response steps.</p></a>
+    <a class="card" href="queries.html"><h3>Query Library</h3><p>Ready search patterns for Windows, Syslog, AIE, alarms, and LogRhythm components.</p></a>
+    <a class="card" href="troubleshooting.html"><h3>Error Playbooks</h3><p>Component-based troubleshooting and common error messages.</p></a>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <p>LogRhythm Reference Guide · Arabic/English · Built for SOC analysts, administrators, and support engineers.</p>
+  <p class="tiny">Source basis: LogRhythm AI Engine course material, SIEM Support Engineer exercises, and LRSE notes provided in this workspace. Customize thresholds and response actions before production use.</p>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>

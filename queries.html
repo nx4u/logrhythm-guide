@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>LogRhythm Query Library | استعلامات</title>
+<meta name="description" content="Bilingual Arabic/English LogRhythm SIEM reference guide for SOC, AIE, troubleshooting, and support." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">LR</span>
+    <span><strong>LogRhythm Guide</strong><small>SIEM · AIE · SOC Ops</small></span>
+  </a>
+  <nav class="nav"><a class="" href="index.html"><span class="ar">الرئيسية</span><span class="en">Home</span></a><a class="" href="use-cases.html"><span class="ar">حالات الكشف</span><span class="en">Use Cases</span></a><a class="active" href="queries.html"><span class="ar">استعلامات</span><span class="en">Queries</span></a><a class="" href="troubleshooting.html"><span class="ar">الأعطال</span><span class="en">Troubleshooting</span></a><a class="" href="checklists.html"><span class="ar">القوائم</span><span class="en">Checklists</span></a></nav>
+  <div class="actions"><button id="langToggle" class="btn">EN / ع</button><button id="themeToggle" class="btn">Light</button></div>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">Search Patterns</p>
+  <h1><span class="ar">مكتبة استعلامات LogRhythm</span><span class="en">LogRhythm Query Library</span></h1>
+  <p class="subtitle"><span class="ar">نماذج بحث جاهزة وقابلة للتعديل. عدّل أسماء الحقول حسب بيئتك وطريقة البحث في Web Console أو Client Console.</span><span class="en">Ready search patterns. Adjust field names to match your environment and search interface.</span></p>
+</section>
+<main>
+<section class="section">
+  <div class="searchbar"><input data-search="query-table" placeholder="Search queries / ابحث داخل الاستعلامات"></div>
+  <div class="table-wrap">
+    <table id="query-table">
+      <thead><tr><th>Use</th><th>Pattern</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr data-searchtext="failed login windows authentication"><td>Failed Logins</td><td><code>Common Event contains "Logon Failure" AND User = &lt;user&gt;</code></td><td>Use before building brute-force logic.</td></tr>
+        <tr data-searchtext="successful login windows authentication"><td>Successful Login</td><td><code>Common Event contains "Logon Success" AND Host = &lt;host&gt;</code></td><td>Correlate after failures.</td></tr>
+        <tr data-searchtext="source ip multiple users password spray"><td>Password Spray</td><td><code>Source IP = &lt;ip&gt; AND Common Event contains "Logon Failure"</code></td><td>Group results by User.</td></tr>
+        <tr data-searchtext="log source stopped last log date collection"><td>Stopped Source</td><td><code>Log Source = &lt;source&gt; AND time range = last 24h</code></td><td>Compare with Last Log Date.</td></tr>
+        <tr data-searchtext="syslog firewall network udp tcp 514"><td>Syslog Check</td><td><code>Host = &lt;device&gt; AND Protocol IN (UDP,TCP)</code></td><td>Pair with Wireshark: <code>udp.port == 514</code>.</td></tr>
+        <tr data-searchtext="aie event alarm rule name"><td>AIE Events</td><td><code>Event Name starts with "AIE" OR Rule Name = &lt;AIE Rule&gt;</code></td><td>AIE events are distinguished by AIE naming.</td></tr>
+        <tr data-searchtext="admin privileged login"><td>Privileged Login</td><td><code>User IN &lt;admin_group&gt; AND Common Event contains "Logon Success"</code></td><td>Review against approved admin activity.</td></tr>
+        <tr data-searchtext="arm alarm notification smtp"><td>Notification Issue</td><td><code>Alarm Name = &lt;alarm&gt; AND Notification Status = failure</code></td><td>Then review <code>scarm.log</code>.</td></tr>
+        <tr data-searchtext="web console missing data indexer"><td>Missing Search Data</td><td><code>Host = &lt;host&gt; AND Log Source = &lt;source&gt;</code></td><td>Validate collection, processing, then indexing.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section">
+  <div class="grid cards-2">
+    <article class="card">
+      <h3>Useful Windows Log IDs</h3>
+      <p>Use these only where your MPE parsing and Windows audit policy support them.</p>
+      <ul><li><code>4624</code> successful logon</li><li><code>4625</code> failed logon</li><li><code>4720</code> user account created</li><li><code>4728/4732</code> added to privileged group</li></ul>
+    </article>
+    <article class="card">
+      <h3>Search Workflow</h3>
+      <ol><li>Start with Common Event or Classification.</li><li>Add entity filters: user, host, source IP, destination IP.</li><li>Expand the time window.</li><li>Pivot from normalized fields to raw log.</li><li>Save as investigation evidence.</li></ol>
+    </article>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <p>LogRhythm Reference Guide · Arabic/English · Built for SOC analysts, administrators, and support engineers.</p>
+  <p class="tiny">Source basis: LogRhythm AI Engine course material, SIEM Support Engineer exercises, and LRSE notes provided in this workspace. Customize thresholds and response actions before production use.</p>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>

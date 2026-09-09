@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>LogRhythm Checklists | القوائم</title>
+<meta name="description" content="Bilingual Arabic/English LogRhythm SIEM reference guide for SOC, AIE, troubleshooting, and support." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">LR</span>
+    <span><strong>LogRhythm Guide</strong><small>SIEM · AIE · SOC Ops</small></span>
+  </a>
+  <nav class="nav"><a class="" href="index.html"><span class="ar">الرئيسية</span><span class="en">Home</span></a><a class="" href="use-cases.html"><span class="ar">حالات الكشف</span><span class="en">Use Cases</span></a><a class="" href="queries.html"><span class="ar">استعلامات</span><span class="en">Queries</span></a><a class="" href="troubleshooting.html"><span class="ar">الأعطال</span><span class="en">Troubleshooting</span></a><a class="active" href="checklists.html"><span class="ar">القوائم</span><span class="en">Checklists</span></a></nav>
+  <div class="actions"><button id="langToggle" class="btn">EN / ع</button><button id="themeToggle" class="btn">Light</button></div>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">SOC Operations</p>
+  <h1><span class="ar">Checklists و Templates</span><span class="en">Checklists & Templates</span></h1>
+  <p class="subtitle"><span class="ar">قوائم تشغيل يومية وقوالب توثيق جاهزة للمحلل أو مسؤول LogRhythm.</span><span class="en">Daily runbooks and documentation templates for analysts and administrators.</span></p>
+</section>
+<main>
+<section class="section">
+  <div class="grid cards-3">
+    <article class="card"><h3>Daily Health</h3><ul><li>Open Deployment Monitor.</li><li>Check host/service status.</li><li>Review database utilization.</li><li>Validate DX search health.</li><li>Review high/critical alarms.</li></ul></article>
+    <article class="card"><h3>Collection Health</h3><ul><li>Critical sources Last Log Date.</li><li>Log volume spikes/drops.</li><li>System Monitor service status.</li><li>Recent <code>scsm.log</code> errors.</li><li>Recent onboarding changes.</li></ul></article>
+    <article class="card"><h3>AIE Health</h3><ul><li>AIE service running.</li><li>Rule sets enabled as expected.</li><li>No unusual alarm spike.</li><li>Review tuning candidates.</li><li>Check workload if delayed.</li></ul></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="kicker">Templates</p>
+    <h2><span class="ar">قوالب توثيق</span><span class="en">Documentation Templates</span></h2>
+  </div>
+  <div class="accordion">
+    <button class="acc">Alarm Triage Note</button>
+    <div class="panel"><pre>Alarm:
+Severity:
+User / Host / Source IP:
+Time window:
+Evidence:
+Initial classification:
+Actions taken:
+Escalation:
+Final disposition:
+Tuning recommendation:</pre></div>
+    <button class="acc">Troubleshooting Case Note</button>
+    <div class="panel"><pre>Problem statement:
+Scope:
+Start time:
+Affected components:
+Relevant logs reviewed:
+Findings:
+Hypothesis:
+Test performed:
+Resolution:
+Prevention / monitoring:</pre></div>
+    <button class="acc">AIE Use Case Design</button>
+    <div class="panel"><pre>Use Case Name:
+Objective:
+Threat / Operational scenario:
+Required log sources:
+Required metadata:
+Rule block type:
+Threshold / time window:
+Group By:
+Alarm action:
+Notification:
+SmartResponse:
+Testing method:
+Tuning notes:</pre></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="callout danger">
+    <h3>Verbose Logging Reminder</h3>
+    <p>Use Verbose logging only while troubleshooting. Change LogLevel back to Warning after finishing to avoid unnecessary volume and performance impact.</p>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <p>LogRhythm Reference Guide · Arabic/English · Built for SOC analysts, administrators, and support engineers.</p>
+  <p class="tiny">Source basis: LogRhythm AI Engine course material, SIEM Support Engineer exercises, and LRSE notes provided in this workspace. Customize thresholds and response actions before production use.</p>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>

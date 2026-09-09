@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>LogRhythm Troubleshooting | الأعطال</title>
+<meta name="description" content="Bilingual Arabic/English LogRhythm SIEM reference guide for SOC, AIE, troubleshooting, and support." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">LR</span>
+    <span><strong>LogRhythm Guide</strong><small>SIEM · AIE · SOC Ops</small></span>
+  </a>
+  <nav class="nav"><a class="" href="index.html"><span class="ar">الرئيسية</span><span class="en">Home</span></a><a class="" href="use-cases.html"><span class="ar">حالات الكشف</span><span class="en">Use Cases</span></a><a class="" href="queries.html"><span class="ar">استعلامات</span><span class="en">Queries</span></a><a class="active" href="troubleshooting.html"><span class="ar">الأعطال</span><span class="en">Troubleshooting</span></a><a class="" href="checklists.html"><span class="ar">القوائم</span><span class="en">Checklists</span></a></nav>
+  <div class="actions"><button id="langToggle" class="btn">EN / ع</button><button id="themeToggle" class="btn">Light</button></div>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">Troubleshooting Center</p>
+  <h1><span class="ar">أخطاء وحلول LogRhythm</span><span class="en">LogRhythm Troubleshooting Center</span></h1>
+  <p class="subtitle"><span class="ar">دليل سريع حسب العرض أو رسالة الخطأ أو المكوّن. اتبع Life of a Log ولا تقفز مباشرة للنهاية.</span><span class="en">A quick guide by symptom, error message, and component. Follow the Life of a Log instead of jumping to the end.</span></p>
+</section>
+<main>
+<section class="section">
+  <div class="searchbar"><input data-search="errors" placeholder="Search errors / ابحث عن خطأ"></div>
+  <div id="errors" class="grid cards-2">
+    <article class="card" data-searchtext="Failed to open event log access denied windows remote collection scsm">
+      <h3>Failed to open event log</h3>
+      <p><b>Likely area:</b> Windows Remote Collection / System Monitor.</p>
+      <ol><li>Check System Monitor service account.</li><li>Validate Event Log Readers membership and permissions.</li><li>Check firewall/RPC access.</li><li>Review <code>scsm.log</code> after restarting System Monitor.</li></ol>
+    </article>
+    <article class="card" data-searchtext="RPC server unavailable firewall remote windows">
+      <h3>RPC server unavailable</h3>
+      <p><b>Likely area:</b> Network path between Agent and Windows host.</p>
+      <ol><li>Validate host is reachable.</li><li>Check Windows Firewall inbound rules.</li><li>Confirm required ports are not blocked.</li><li>Test with Event Viewer from collector host.</li></ol>
+    </article>
+    <article class="card" data-searchtext="Syslog not received udp tcp 514 wireshark">
+      <h3>Syslog not received</h3>
+      <p><b>Likely area:</b> Source configuration, network, or listener.</p>
+      <ol><li>Confirm destination IP, port, and protocol on the source device.</li><li>Capture traffic with Wireshark using <code>udp.port == 514</code> or <code>tcp.port == 514</code>.</li><li>Check listener and Log Source mapping.</li><li>Review <code>scsm.log</code>.</li></ol>
+    </article>
+    <article class="card" data-searchtext="Flat file not collected path permission date parsing">
+      <h3>Flat file not collected</h3>
+      <p><b>Likely area:</b> Path, permissions, or parsing format.</p>
+      <ol><li>Restart System Monitor and watch first <code>scsm.log</code> errors.</li><li>Validate absolute file path.</li><li>Confirm account can read folder and files.</li><li>Validate date parsing format and directory options.</li></ol>
+    </article>
+    <article class="card" data-searchtext="AIE rule not triggering group by metadata lraieengine">
+      <h3>AIE Rule not triggering</h3>
+      <p><b>Likely area:</b> Rule logic, metadata, or workload.</p>
+      <ol><li>Confirm rule is enabled.</li><li>Search for expected metadata first.</li><li>Validate Rule Block criteria and Group By.</li><li>Check Relationship Time Limit.</li><li>Review <code>lraieengine.log</code> and <code>lraiedp.log</code>.</li></ol>
+    </article>
+    <article class="card" data-searchtext="Alarm notification not received ARM SMTP notification policy scarm">
+      <h3>Alarm notification not received</h3>
+      <p><b>Likely area:</b> ARM, Notify tab, or SMTP.</p>
+      <ol><li>Open Alarm Rule &gt; Notify tab.</li><li>Validate Person/Role and group membership.</li><li>Confirm SMTP address and Notification Policy.</li><li>Review <code>scarm.log</code> for ARM errors.</li></ol>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <p class="kicker">Component Logs</p>
+    <h2><span class="ar">أين تفتش؟</span><span class="en">Where to Look</span></h2>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Component</th><th>Primary logs</th><th>Use when</th></tr></thead>
+      <tbody>
+        <tr><td>System Monitor</td><td><code>scsm.log</code></td><td>No logs, remote collection errors, Syslog, Flat File.</td></tr>
+        <tr><td>Data Processor</td><td><code>scmedsvr.log</code>, <code>scmpe.log</code>, <code>lraiedp.log</code></td><td>Parsing, MPE matching, forwarding to AIE.</td></tr>
+        <tr><td>Data Indexer</td><td><code>columbo.log</code>, <code>carpenter.log</code>, <code>bulldozer.log</code></td><td>Search missing data, indexing delay, DX health.</td></tr>
+        <tr><td>AI Engine</td><td><code>lraieengine.log</code>, <code>lraiecommgr.log</code></td><td>AIE rule execution, correlation, workload.</td></tr>
+        <tr><td>ARM</td><td><code>scarm.log</code></td><td>Alarms, notifications, SmartResponse.</td></tr>
+        <tr><td>Job Manager</td><td><code>lrjobmgr.log</code></td><td>Scheduled reports and jobs.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</main>
+
+
+<footer>
+  <p>LogRhythm Reference Guide · Arabic/English · Built for SOC analysts, administrators, and support engineers.</p>
+  <p class="tiny">Source basis: LogRhythm AI Engine course material, SIEM Support Engineer exercises, and LRSE notes provided in this workspace. Customize thresholds and response actions before production use.</p>
+</footer>
+<script src="script.js"></script>
+
+</body>
+</html>
