@@ -1,0 +1,16 @@
+<!doctype html><html lang="ar" dir="rtl" data-lang="ar" data-theme="dark"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Use Cases | LogRhythm Guide</title><meta name="description" content="Professional bilingual LogRhythm SIEM reference guide"/><link rel="stylesheet" href="style.css"/></head><body><header class="topbar"><div class="container wrap"><a class="brand" href="index.html"><span class="logo">LR</span><span><strong>LogRhythm Guide</strong><small>SIEM · AIE · SOC Operations</small></span></a><nav class="nav"><a href="index.html" class="">Home</a><a href="deep-dive.html" class="">Deep Dive</a><a href="components.html" class="">Components</a><a href="client-console.html" class="">Client Console</a><a href="platform-manager.html" class="">Platform Manager</a><a href="aie.html" class="">AIE</a><a href="use-cases.html" class="active">Use Cases</a><a href="queries.html" class="">Queries</a><a href="troubleshooting.html" class="">Troubleshooting</a><a href="checklists.html" class="">Checklists</a></nav><div class="actions"><button id="langToggle" class="btn">EN</button><button id="themeToggle" class="btn">Light</button></div></div></header>
+<section class="hero"><div class="container"><div class="panel hero-copy"><span class="eyebrow">Use Cases</span><h1><span class="lang-ar">حالات كشف عملية</span><span class="lang-en">Practical detection use cases</span></h1><p class="lead">Use cases should include risk, required logs, detection logic, triage, response, and tuning notes.</p></div></div></section>
+<main class="container"><section class="section"><div class="grid cols-2"><div class="card"><h3>Brute force followed by success</h3><pre>Block 1: Threshold Observed
+5-10 failures / 10 min
+
+Block 2: Log Observed
+Success for same user
+
+Group By: User + Source IP</pre></div><div class="card"><h3>Admin outside baseline</h3><pre>Behavioral: Whitelist / Statistical
+Fields: User, Host, Source IP
+Action: Notify SOC + verify owner</pre></div><div class="card"><h3>Critical source silent</h3><pre>Not Observed Scheduled
+No firewall logs in expected window
+Action: Verify source/network/SysMon</pre></div><div class="card"><h3>User from many IPs</h3><pre>Unique Values
+Same user from multiple source IPs
+Window: 15-60 minutes</pre></div></div></section></main>
+<footer><div class="container"><p class="lang-ar">دليل LogRhythm احترافي ثابت على GitHub Pages، مع صور من الوثائق الرسمية ورسومات داخلية بديلة.</p><p class="lang-en">A professional LogRhythm guide for GitHub Pages, with official documentation visuals and internal fallback diagrams.</p><p style="font-size:12px">Official visual references are embedded from public LogRhythm/Exabeam documentation where available.</p></div></footer><script src="script.js"></script></body></html>

@@ -1,0 +1,17 @@
+<!doctype html><html lang="ar" dir="rtl" data-lang="ar" data-theme="dark"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Components | LogRhythm Guide</title><meta name="description" content="Professional bilingual LogRhythm SIEM reference guide"/><link rel="stylesheet" href="style.css"/></head><body><header class="topbar"><div class="container wrap"><a class="brand" href="index.html"><span class="logo">LR</span><span><strong>LogRhythm Guide</strong><small>SIEM · AIE · SOC Operations</small></span></a><nav class="nav"><a href="index.html" class="">Home</a><a href="deep-dive.html" class="">Deep Dive</a><a href="components.html" class="active">Components</a><a href="client-console.html" class="">Client Console</a><a href="platform-manager.html" class="">Platform Manager</a><a href="aie.html" class="">AIE</a><a href="use-cases.html" class="">Use Cases</a><a href="queries.html" class="">Queries</a><a href="troubleshooting.html" class="">Troubleshooting</a><a href="checklists.html" class="">Checklists</a></nav><div class="actions"><button id="langToggle" class="btn">EN</button><button id="themeToggle" class="btn">Light</button></div></div></header>
+<section class="hero"><div class="container"><div class="panel hero-copy"><span class="eyebrow">Component Reference</span><h1><span class="lang-ar">مرجع المكونات الأساسية</span><span class="lang-en">Core Component Reference</span></h1><p class="lead"><span class="lang-ar">هذه الصفحة تفصل دور كل مكوّن، متى تراجعه، وما ملف اللوق المرتبط به.</span><span class="lang-en">This page breaks down each component, when to inspect it, and which log files matter.</span></p></div></div></section>
+<main class="container"><section class="section"><div class="grid cols-3">
+<div class="card"><span class="badge">Collection</span><h3>System Monitor</h3><p class="muted">Collects local/remote logs, Syslog, flat files, endpoint data.</p><pre>scsm.log</pre></div>
+<div class="card"><span class="badge">Processing</span><h3>Data Processor</h3><p class="muted">Normalizes logs with MPE and forwards processed data.</p><pre>scmedsvr.log
+scmpe.log
+lraiedp.log</pre></div>
+<div class="card"><span class="badge">Search</span><h3>Data Indexer</h3><p class="muted">Stores raw and structured data for high-performance search.</p><pre>columbo.log
+carpenter.log
+bulldozer.log</pre></div>
+<div class="card"><span class="badge">Correlation</span><h3>AI Engine</h3><p class="muted">Detects multi-source and multi-time-range conditions.</p><pre>lraieengine.log
+lraiecommgr.log</pre></div>
+<div class="card"><span class="badge">Control</span><h3>Platform Manager</h3><p class="muted">Hub for events, config, licensing, ARM, Job Manager, SQL.</p><pre>scarm.log
+lrjobmgr.log</pre></div>
+<div class="card"><span class="badge">Interface</span><h3>Console</h3><p class="muted">Client Console for admin, Web Console for analyst operations.</p><pre>Web Console API/UI logs</pre></div>
+</div></section></main>
+<footer><div class="container"><p class="lang-ar">دليل LogRhythm احترافي ثابت على GitHub Pages، مع صور من الوثائق الرسمية ورسومات داخلية بديلة.</p><p class="lang-en">A professional LogRhythm guide for GitHub Pages, with official documentation visuals and internal fallback diagrams.</p><p style="font-size:12px">Official visual references are embedded from public LogRhythm/Exabeam documentation where available.</p></div></footer><script src="script.js"></script></body></html>
